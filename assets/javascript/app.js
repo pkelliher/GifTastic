@@ -1,4 +1,4 @@
-$(function(){
+$(document).ready(function(){
     populateButtons(searchArray,'searchButton','#buttonsArea');
     console.log("Page loaded");
 })
@@ -54,7 +54,9 @@ $(document).on('click', '.searchImage',function(){
     }
 })
 
-$('#addSearch').on('click', function(){
+$('#addSearch').on('click', function() {
+    // event.preventDefault();
+    console.log('this is working')
     var newSearch = $('input').eq(0).val();
     searchArray.push(newSearch);
     populateButtons(searchArray, 'searchButton', '#buttonsArea');
