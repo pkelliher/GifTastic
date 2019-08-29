@@ -1,9 +1,11 @@
+// ES5 Version
+
 $(document).ready(function(){
     populateButtons(searchArray,'searchButton','#buttonsArea');
     console.log("Page loaded");
 })
 
-var searchArray = ['Dog', 'Cat', 'Bird'];
+var searchArray = ['Elephant', 'Giraffe', 'Dog'];
 
 function populateButtons(searchArray,classToAdd,areaToAddTo){
     $(areaToAddTo).empty();
@@ -62,3 +64,73 @@ $('#addSearch').on('click', function() {
     populateButtons(searchArray, 'searchButton', '#buttonsArea');
     return false;
 })
+
+
+
+// ES6 version
+
+// $(document).ready(() => {
+//     populateButtons(searchArray, 'searchButton', '#buttonsArea');
+//     console.log("Page loaded");
+// })
+
+// const searchArray = ['Elephant', 'Giraffe', 'Dog'];
+
+// function populateButtons(searchArray, classToAdd, areaToAddTo) {
+//     $(areaToAddTo).empty();
+//     for(let i=0;i<searchArray.length;i++){
+//         const a = $('<button>');
+//         a.addClass(classToAdd);
+//         a.attr('data-type', searchArray[i]);
+//         a.text(searchArray[i]);
+//         $(areaToAddTo).append(a);
+//     }
+// }
+
+// $(document).on('click', '.searchButton', () => {
+//     const type = $(this).data('type');
+//     const queryURL = "http://api.giphy.com/v1/gifs/search?q=" +type+ "&api_key=Z3udkbSvDi6cSWPxjyy0wTpVxCaEnT5N&limit=10";
+//     $.ajax({
+//         url: queryURL,
+//         method: "Get"
+//     })
+//     .done(response => {
+//         for (let i=0;i<response.data.length;i++); {
+//              const searchDiv = $('<div class="search-item">');
+//              const rating = response.data[i].rating;
+//              const p = $('<p>').text('Rating: '+rating);
+//              const animated = response.data[i].images.fixed_height.url;
+//              const still = response.data[i].images.fixed_height_still.url;
+//              const image = $('<img>');
+//              image.attr('src', still);
+//              image.attr('data-still', still);
+//              image.attr('data-animated', animated);
+//              image.attr('data-state', 'still');
+//              image.addClass('searchImage');
+//              searchDiv.append(p);
+//              searchDiv.append(image);
+//              $('#searches').append(searchDiv);
+//         }
+//         })
+//     })
+
+
+// $(document).on('click', '.searchImage', () => {
+//     const state = $(this).attr('data-state');
+//     if(state == 'still'){
+//         $(this).attr('src', $(this).data('animated'));
+//         $(this).attr('data-state', 'animated');
+//     } else {
+//         $(this).attr('src', $(this).data('still'));
+//         $(this).attr('data-state', 'still');
+//     }
+// })
+
+// $('#addSearch').on('click', () => {
+//     // event.preventDefault();
+//     console.log('this is working')
+//     const newSearch = $('input').eq(0).val();
+//     searchArray.push(newSearch);
+//     populateButtons(searchArray, 'searchButton', '#buttonsArea');
+//     return false;
+// })
